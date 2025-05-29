@@ -1,0 +1,51 @@
+[
+  {
+    "id": "g1",
+    "name": "Quantum Keychain",
+    "price": 17.49,
+    "image": "https://placehold.co/300x400?text=Quantum+Keychain",
+    "stock": 12
+  },
+  {
+    "id": "g2",
+    "name": "MoodCube LED Orb",
+    "price": 24.99,
+    "image": "https://placehold.co/300x400?text=MoodCube+LED+Orb",
+    "stock": 6
+  },
+  {
+    "id": "g3",
+    "name": "Pocket Espresso Shotgun",
+    "price": 39.95,
+    "image": "https://placehold.co/300x400?text=Espresso+Shotgun",
+    "stock": 3
+  },
+  {
+    "id": "g4",
+    "name": "Solar-Powered Fidget Disc",
+    "price": 15.00,
+    "image": "https://placehold.co/300x400?text=Solar+Fidget+Disc",
+    "stock": 18
+  },
+  {
+    "id": "g5",
+    "name": "Mini Desktop Vacuum Bot",
+    "price": 22.99,
+    "image": "https://placehold.co/300x400?text=Vacuum+Bot",
+    "stock": 4
+  },
+  {
+    "id": "g6",
+    "name": "Glow-in-the-Dark Cable Tamer",
+    "price": 9.99,
+    "image": "https://placehold.co/300x400?text=Cable+Tamer",
+    "stock": 25
+  },
+  {
+    "id": "g7",
+    "name": "Wrist-Mounted Bubble Blaster",
+    "price": 27.00,
+    "image": "https://placehold.co/300x400?text=Bubble+Blaster",
+    "stock": 7
+  }
+]
